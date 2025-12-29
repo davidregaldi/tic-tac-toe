@@ -42,7 +42,7 @@ function App() {
     if (firstSquareSymbol &&
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol) {
-      winner = firstSquareSymbol;
+      winner = players[firstSquareSymbol];
     }
   }
   const hasDraw = gameTurns.length === 9 && !winner;
@@ -77,11 +77,13 @@ function App() {
           initialName="Player 1"
           symbol="X"
           isActive={activePlayer === "X"}
+          onChangeName={handlePlayerNameChange}
         />
         <Player
           initialName="Player 2"
           symbol="O"
           isActive={activePlayer === "O"}
+          onChangeName={handlePlayerNameChange}
         />
       </ol>
       {(winner || hasDraw) && <GameOver winner={winner} onRestart={handleRestart} />}
